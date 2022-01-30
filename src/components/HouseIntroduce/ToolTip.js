@@ -1,22 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const ToolTip = ({ productName, outside, pointX, pointY, priceOriginal, priceDiscount, discountRate, imageUrl }) => {
+const ToolTip = ({
+    productId,
+    productName,
+    outside,
+    pointX,
+    pointY,
+    priceOriginal,
+    priceDiscount,
+    discountRate,
+    imageUrl,
+    makeToolTipActiveInfo,
+    openActive,
+    closeActive,
+}) => {
+    const [open, setOpen] = useState(false);
     return (
-        <div data-x={pointX} data-y={pointY} style={{ display: "block" }}>
-            <img
-                src="//cdn.ggumim.co.kr/storage/20211029145238AlZrQ41xtg.png"
-                style={{ width: "32px", height: "32px" }}
-            />
-            <img
-                src="//cdn.ggumim.co.kr/storage/20211029145330GwwumnWNSs.png"
-                class="close-icon hide"
-                width="32"
-                height="32"
-            />
+        <ToolTipBigBox data-x={pointX} data-y={pointY} style={{ display: "block", top: pointX, left: pointY }}>
+            {open ? (
+                <img
+                    src="//cdn.ggumim.co.kr/storage/20211029145238AlZrQ41xtg.png"
+                    onClick={() => closeActive(productId)}
+                    alt="돋보기"
+                    width="32px"
+                    height="32px"
+                />
+            ) : (
+                <img
+                    src="//cdn.ggumim.co.kr/storage/20211029145330GwwumnWNSs.png"
+                    onClick={() => openActive(productId)}
+                    alt="X표시"
+                    width="32"
+                    height="32"
+                />
+            )}
             <ToolTipSpan>
                 <ImageDiv>
-                    <img src={imageUrl} />
+                    <img src={imageUrl} alt="productImage" />
                 </ImageDiv>
                 <ToolTipCenter>
                     <div>{productName}</div>
@@ -29,13 +50,18 @@ const ToolTip = ({ productName, outside, pointX, pointY, priceOriginal, priceDis
                     <img
                         alt="상품보기"
                         src="//cdn.ggumim.co.kr/storage/20211102181936xqHzyWAmb8.png"
-                        style={{ width: "20px", height: "20px" }}
+                        width="20px"
+                        height="20px"
                     />
                 </ArrowBox>
             </ToolTipSpan>
-        </div>
+        </ToolTipBigBox>
     );
 };
+
+const ToolTipBigBox = styled.div`
+    position: absolute;
+`;
 
 const ToolTipSpan = styled.span`
     display: flex;
