@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
 
 const ToolTip = ({
@@ -11,14 +12,14 @@ const ToolTip = ({
     priceDiscount,
     discountRate,
     imageUrl,
-    makeToolTipActiveInfo,
+    toolTipActiveInfo,
     openActive,
     closeActive,
 }) => {
-    const [open, setOpen] = useState(false);
+    // console.log(toolTipActiveInfo.find((info) => info.productId === productId));
     return (
         <ToolTipBigBox data-x={pointX} data-y={pointY} style={{ display: "block", top: pointX, left: pointY }}>
-            {open ? (
+            {toolTipActiveInfo.find((info) => info.productId === productId).active ? (
                 <img
                     src="//cdn.ggumim.co.kr/storage/20211029145238AlZrQ41xtg.png"
                     onClick={() => closeActive(productId)}
@@ -35,7 +36,11 @@ const ToolTip = ({
                     height="32"
                 />
             )}
-            <ToolTipSpan>
+            <ToolTipSpan
+                style={{
+                    display: toolTipActiveInfo.find((info) => info.productId === productId).active ? null : "none",
+                }}
+            >
                 <ImageDiv>
                     <img src={imageUrl} alt="productImage" />
                 </ImageDiv>
@@ -43,7 +48,7 @@ const ToolTip = ({
                     <div>{productName}</div>
                     <PriceBox>
                         <span>{outside ? "예상가" : `${discountRate}%`}</span>
-                        <span>{outside ? priceOriginal : priceDiscount}</span>
+                        <span>{priceDiscount}</span>
                     </PriceBox>
                 </ToolTipCenter>
                 <ArrowBox>
