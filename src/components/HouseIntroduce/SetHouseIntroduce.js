@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import HouseIntorduceCenter from "./HouseIntorduceCenter";
+import styled from "styled-components";
+import ToolTip from "./HouseIntorduceCenter";
 import HouseIntorduceSlide from "./HouseIntorduceSlide";
 
 const SetHouseIntroduce = () => {
@@ -17,21 +18,23 @@ const SetHouseIntroduce = () => {
     }, []);
 
     return (
-        <div>
-            <img src={houseInfo?.imageUrl} />
-            {houseInfo?.productList.map((productList) => (
-                <HouseIntorduceCenter
-                    key={productList.productId}
-                    productName={productList.productName}
-                    outside={productList.outside}
-                    pointX={productList.pointX}
-                    pointY={productList.pointY}
-                    priceOriginal={productList.priceOriginal}
-                    priceDiscount={productList.priceDiscount}
-                    discountRate={productList.discountRate}
-                    imageUrl={productList.imageUrl}
-                />
-            ))}
+        <div style={{ marginTop: "100px" }}>
+            <ViewContentImage>
+                <img src={houseInfo?.imageUrl} style={{ width: "100%", height: "auto" }} />
+                {houseInfo?.productList.map((productList) => (
+                    <ToolTip
+                        key={productList.productId}
+                        productName={productList.productName}
+                        outside={productList.outside}
+                        pointX={productList.pointX}
+                        pointY={productList.pointY}
+                        priceOriginal={productList.priceOriginal}
+                        priceDiscount={productList.priceDiscount}
+                        discountRate={productList.discountRate}
+                        imageUrl={productList.imageUrl}
+                    />
+                ))}
+            </ViewContentImage>
             <div style={{ display: "flex" }}>
                 {houseInfo?.productList.map((productList) => (
                     <HouseIntorduceSlide
@@ -44,5 +47,11 @@ const SetHouseIntroduce = () => {
         </div>
     );
 };
+
+const ViewContentImage = styled.div`
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+`;
 
 export default SetHouseIntroduce;

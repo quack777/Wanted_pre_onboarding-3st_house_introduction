@@ -1,13 +1,17 @@
 import React from "react";
-import style from "style-component";
+import styled from "styled-components";
 import SetHouseIntroduce from "../../components/HouseIntroduce/SetHouseIntroduce";
 
 const Main = () => {
     return (
-        <div>
+        <MainLayout>
             <SetHouseIntroduce />
-        </div>
+        </MainLayout>
     );
 };
 
+const MainLayout = styled.div`
+    max-width: 800px;
+    margin: 0 auto;
+`;
 export default Main;
