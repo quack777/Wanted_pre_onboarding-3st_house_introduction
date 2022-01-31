@@ -18,7 +18,11 @@ const ToolTip = ({
 }) => {
     // console.log(toolTipActiveInfo.find((info) => info.productId === productId));
     return (
-        <ToolTipBigBox data-x={pointX} data-y={pointY} style={{ display: "block", top: pointX, left: pointY }}>
+        <ToolTipBigBox
+            data-x={pointX}
+            data-y={pointY}
+            style={{ display: "block", top: (pointX * 998.971) / 550, left: pointY * 1.6 }}
+        >
             {toolTipActiveInfo.find((info) => info.productId === productId).active ? (
                 <img
                     src="//cdn.ggumim.co.kr/storage/20211029145238AlZrQ41xtg.png"
@@ -71,6 +75,9 @@ const ToolTipBigBox = styled.div`
 const ToolTipSpan = styled.span`
     display: flex;
     align-items: center;
+    position: absolute;
+    top: 28px;
+    left: -20px;
     background-color: rgba(255, 255, 255, 0.95);
     width: 220px;
     height: 86px;

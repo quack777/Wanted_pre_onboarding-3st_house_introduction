@@ -133,6 +133,7 @@ const SlideOverflow = styled.div`
     overflow-x: auto;
     background-color: #fff;
     padding: 0 10px;
+    margin-bottom: 100px;
     touch-action: pan-y;
 `;
 
