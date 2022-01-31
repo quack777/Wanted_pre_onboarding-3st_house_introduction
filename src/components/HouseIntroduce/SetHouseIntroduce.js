@@ -31,18 +31,6 @@ const SetHouseIntroduce = () => {
         setToolTipActiveInfo(...toolTipActiveInfo, pushtoolTipActiveInfo);
     };
 
-    const openActive = (productId) => {
-        setToolTipActiveInfo(
-            toolTipActiveInfo.map((info) => (info.productId === productId ? { ...info, active: true } : info)),
-        );
-    };
-
-    const closeActive = (productId) => {
-        setToolTipActiveInfo(
-            toolTipActiveInfo.map((info) => (info.productId === productId ? { ...info, active: false } : info)),
-        );
-    };
-
     useEffect(() => {
         const getHouseInfo = () => {
             axios
@@ -57,6 +45,23 @@ const SetHouseIntroduce = () => {
         getHouseInfo();
     }, []);
 
+    const openActive = (productId) => {
+        setToolTipActiveInfo(
+            toolTipActiveInfo.map((info) =>
+                info.productId === productId ? { ...info, active: true } : { ...info, active: false },
+            ),
+        );
+    };
+
+    const closeActive = (productId) => {
+        setToolTipActiveInfo(
+            toolTipActiveInfo.map((info) => (info.productId === productId ? { ...info, active: false } : info)),
+        );
+    };
+
+    const allCloseActive = () => {
+        setToolTipActiveInfo(toolTipActiveInfo.map((info) => (info.active ? { ...info, active: false } : info)));
+    };
     return (
         <div style={{ marginTop: "100px" }}>
             {isLoading ? (
@@ -64,7 +69,12 @@ const SetHouseIntroduce = () => {
             ) : (
                 <>
                     <ViewContentImage>
-                        <img src={houseInfo?.imageUrl} alt="productImg" style={{ width: "100%", height: "auto" }} />
+                        <img
+                            src={houseInfo?.imageUrl}
+                            onClick={allCloseActive}
+                            alt="productImg"
+                            style={{ width: "100%", height: "auto" }}
+                        />
                         {houseInfo?.productList.map((productList) => (
                             <ToolTip
                                 key={productList.productId}
