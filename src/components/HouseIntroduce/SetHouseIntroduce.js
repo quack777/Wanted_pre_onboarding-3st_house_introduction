@@ -62,6 +62,7 @@ const SetHouseIntroduce = () => {
     const allCloseActive = () => {
         setToolTipActiveInfo(toolTipActiveInfo.map((info) => (info.active ? { ...info, active: false } : info)));
     };
+
     return (
         <div style={{ marginTop: "100px" }}>
             {isLoading ? (
@@ -104,6 +105,7 @@ const SetHouseIntroduce = () => {
                                     discountRate={productList.discountRate}
                                     toolTipActiveInfo={toolTipActiveInfo}
                                     openActive={openActive}
+                                    closeActive={closeActive}
                                 />
                             ))}
                         </SlideMoveBox>

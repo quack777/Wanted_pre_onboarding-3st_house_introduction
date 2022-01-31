@@ -1,12 +1,16 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const HouseIntorduceSlide = ({ productId, imageUrl, discountRate, toolTipActiveInfo, openActive }) => {
+const HouseIntorduceSlide = ({ productId, imageUrl, discountRate, toolTipActiveInfo, openActive, closeActive }) => {
     console.log(toolTipActiveInfo.find((info) => info.productId === productId).active);
     return (
         <SlideSmallBox
             active={toolTipActiveInfo.find((info) => info.productId === productId).active}
-            onClick={() => openActive(productId)}
+            onClick={() =>
+                toolTipActiveInfo.find((info) => info.productId === productId).active
+                    ? closeActive(productId)
+                    : openActive(productId)
+            }
         >
             <img alt="slideImg" src={imageUrl} />
             {discountRate === 0 ? null : (
