@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const ToolTip = ({
     productId,
@@ -47,7 +47,7 @@ const ToolTip = ({
                 <ToolTipCenter>
                     <div>{productName}</div>
                     <PriceBox>
-                        <span>{outside ? "예상가" : `${discountRate}%`}</span>
+                        <DiscountWhether discount={!outside}>{outside ? "예상가" : `${discountRate}%`}</DiscountWhether>
                         <span>{priceDiscount}</span>
                     </PriceBox>
                 </ToolTipCenter>
@@ -80,6 +80,18 @@ const ToolTipSpan = styled.span`
     box-shadow: 3px 3px 8px 0 rgb(0 0 0 / 20%);
     font-size: 14px;
     color: #4a4a4a;
+    &::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 34px;
+        width: 12px;
+        height: 8px;
+        background-image: url(//cdn.ggumim.co.kr/storage/20211118152728RO3OXnhkrC.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 1100;
+    }
 `;
 
 const ImageDiv = styled.div`
@@ -111,7 +123,7 @@ const ToolTipCenter = styled.div`
         color: #333c45;
         white-space: initial;
         text-overflow: ellipsis;
-        line-height: 1.3em;
+        line-height: 1.1em;
     }
 `;
 
@@ -119,13 +131,6 @@ const PriceBox = styled.div`
     display: flex;
     align-items: center;
     margin-top: 4px;
-    & > span:nth-child(1) {
-        color: #898f94;
-        font-size: 11px;
-        line-height: 11px;
-        font-weight: bold;
-        margin-right: 4px;
-    }
     & > span:nth-child(2) {
         display: flex;
         align-items: center;
@@ -134,6 +139,22 @@ const PriceBox = styled.div`
         line-height: 16px;
         font-weight: bold;
     }
+`;
+
+const DiscountWhether = styled.span`
+    color: #898f94;
+    font-size: 11px;
+    line-height: 11px;
+    font-weight: bold;
+    margin-right: 4px;
+    ${(props) =>
+        props.discount &&
+        css`
+            color: #ff585d;
+            margin-right: 4px;
+            font-size: 16px;
+            font-weight: bold;
+        `}
 `;
 
 const ArrowBox = styled.div`

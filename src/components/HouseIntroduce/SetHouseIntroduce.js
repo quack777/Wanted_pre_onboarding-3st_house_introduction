@@ -101,7 +101,9 @@ const SetHouseIntroduce = () => {
                                     productId={productList.productId}
                                     productName={productList.productName}
                                     imageUrl={productList.imageUrl}
+                                    discountRate={productList.discountRate}
                                     toolTipActiveInfo={toolTipActiveInfo}
+                                    openActive={openActive}
                                 />
                             ))}
                         </SlideMoveBox>

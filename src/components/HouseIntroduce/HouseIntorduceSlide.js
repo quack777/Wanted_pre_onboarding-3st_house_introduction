@@ -1,11 +1,20 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const HouseIntorduceSlide = ({ productId, imageUrl, toolTipActiveInfo }) => {
+const HouseIntorduceSlide = ({ productId, imageUrl, discountRate, toolTipActiveInfo, openActive }) => {
     console.log(toolTipActiveInfo.find((info) => info.productId === productId).active);
     return (
-        <SlideSmallBox active={toolTipActiveInfo.find((info) => info.productId === productId).active}>
+        <SlideSmallBox
+            active={toolTipActiveInfo.find((info) => info.productId === productId).active}
+            onClick={() => openActive(productId)}
+        >
             <img alt="slideImg" src={imageUrl} />
+            {discountRate === 0 ? null : (
+                <DiscountRateBox>
+                    {discountRate}
+                    <span>%</span>
+                </DiscountRateBox>
+            )}
         </SlideSmallBox>
     );
 };
@@ -36,6 +45,27 @@ const SlideSmallBox = styled.div`
         border: 0.5px solid #aaafb9;
         user-select: none;
         cursor: pointer;
+    }
+`;
+
+const DiscountRateBox = styled.div`
+    position: absolute;
+    top: 0;
+    right: 5px;
+    background-image: url(//cdn.ggumim.co.kr/storage/20211117191419RW6JS6bjRm.png);
+    width: 24px;
+    height: 28px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 25px;
+    color: white;
+    text-align: center;
+    padding-left: 1px;
+    & > span {
+        font-size: 8px;
     }
 `;
 
