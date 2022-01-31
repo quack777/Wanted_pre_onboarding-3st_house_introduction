@@ -33,12 +33,25 @@
 
 ```
 src
-    ├─components
+	│  index.js
+	│  Router.js
+	│
+	├─components
 	│  ├─HouseIntroduce
+	│  │      HouseIntorduceHead.js
+	│  │      HouseIntorduceSlide.js
+	│  │      SetHouseIntroduce.js
+	│  │      ToolTip.js
+	│  │
 	│  └─Nav
+	│          Nav.js
+	│
 	├─pages
 	│  └─Main
+	│          Main.js
+	│
 	└─styles
+			GlobalStyle.js
 ```
 
 ## **📕레퍼런스**
