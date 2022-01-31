@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ToolTip from "./ToolTip";
 import HouseIntorduceSlide from "./HouseIntorduceSlide";
+import HouseIntorduceHead from "./HouseIntorduceHead";
 
 const test = [
     { productId: 1, active: false },
@@ -69,6 +70,7 @@ const SetHouseIntroduce = () => {
                 <p>api호출중</p>
             ) : (
                 <>
+                    <HouseIntorduceHead />
                     <ViewContentImage>
                         <img
                             src={houseInfo?.imageUrl}
@@ -121,6 +123,7 @@ const ViewContentImage = styled.div`
     position: relative;
     display: inline-block;
     text-align: center;
+    padding-top: 40px;
 `;
 
 const SlideOverflow = styled.div`
