@@ -16,7 +16,6 @@ const ToolTip = ({
     openActive,
     closeActive,
 }) => {
-    // console.log(toolTipActiveInfo.find((info) => info.productId === productId));
     return (
         <ToolTipBigBox
             data-x={pointX}

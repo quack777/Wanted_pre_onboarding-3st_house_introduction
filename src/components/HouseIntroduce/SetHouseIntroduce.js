@@ -5,16 +5,6 @@ import ToolTip from "./ToolTip";
 import HouseIntorduceSlide from "./HouseIntorduceSlide";
 import HouseIntorduceHead from "./HouseIntorduceHead";
 
-const test = [
-    { productId: 1, active: false },
-    { productId: 2, active: false },
-    { productId: 3, active: false },
-    { productId: 4, active: false },
-    { productId: 5, active: false },
-    { productId: 6, active: false },
-    { productId: 7, active: false },
-];
-
 const SetHouseIntroduce = () => {
     const [houseInfo, setHouseInfo] = useState();
     const [toolTipActiveInfo, setToolTipActiveInfo] = useState([]);
@@ -24,9 +14,6 @@ const SetHouseIntroduce = () => {
         const pushtoolTipActiveInfo = [];
 
         productList.map((product) => {
-            // setToolTipActiveInfo(toolTipActiveInfo.concat([{ productId: product.productId, active: false }]));
-            /* const pushtoolTipActiveInfo = { productId: product.productId, active: false };
-            setToolTipActiveInfo([...toolTipActiveInfo, pushtoolTipActiveInfo]); */
             pushtoolTipActiveInfo.push({ productId: product.productId, active: false });
         });
         setToolTipActiveInfo(...toolTipActiveInfo, pushtoolTipActiveInfo);
@@ -67,7 +54,7 @@ const SetHouseIntroduce = () => {
     return (
         <div style={{ marginTop: "100px" }}>
             {isLoading ? (
-                <p>api호출중</p>
+                <p>Loading...</p>
             ) : (
                 <>
                     <HouseIntorduceHead />
