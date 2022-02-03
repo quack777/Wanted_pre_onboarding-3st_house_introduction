@@ -20,7 +20,7 @@ const ToolTip = ({
         <ToolTipBigBox
             data-x={pointX}
             data-y={pointY}
-            style={{ display: "block", top: (pointX * 998.971) / 550, left: pointY * 1.6 }}
+            style={{ display: "block", top: pointX * 1.6, left: pointY * 1.6 }}
         >
             {toolTipActiveInfo.find((info) => info.productId === productId).active ? (
                 <img
