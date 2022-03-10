@@ -50,7 +50,7 @@ const ToolTip = ({
                     <div>{productName}</div>
                     <PriceBox>
                         <DiscountWhether discount={!outside}>{outside ? "예상가" : `${discountRate}%`}</DiscountWhether>
-                        <span>{priceDiscount}</span>
+                        <span>{priceDiscount.toLocaleString()}</span>
                     </PriceBox>
                 </ToolTipCenter>
                 <ArrowBox>
