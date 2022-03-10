@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import React from "react";
 import styled, { css } from "styled-components";
 
 const ToolTip = ({
