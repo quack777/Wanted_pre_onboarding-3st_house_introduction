@@ -85,6 +85,7 @@ const ToolTipSpan = styled.span`
     box-shadow: 3px 3px 8px 0 rgb(0 0 0 / 20%);
     font-size: 14px;
     color: #4a4a4a;
+    z-index: 10;
     &::before {
         content: "";
         position: absolute;
